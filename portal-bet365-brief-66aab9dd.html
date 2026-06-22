@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>简明指南 · bet365 访问与知识索引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f9fc;
+      color: #0b2b38;
+      line-height: 1.6;
+      padding: 20px 16px 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* header / hero */
+    .hero {
+      background: linear-gradient(145deg, #e1f0f0 0%, #cde3e6 100%);
+      border-radius: 32px 32px 32px 8px;
+      padding: 40px 28px 36px;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 20px rgba(20, 90, 100, 0.06);
+      border: 1px solid rgba(60, 140, 150, 0.15);
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b3d49;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #2a6b7a;
+      background: rgba(80, 170, 180, 0.14);
+      padding: 4px 12px;
+      border-radius: 40px;
+      margin-left: 4px;
+    }
+
+    .hero p {
+      margin-top: 16px;
+      font-size: 1.05rem;
+      color: #174d5a;
+      max-width: 80%;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 30px 18px 28px;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .hero p {
+        max-width: 100%;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* 网格卡片 —— 目录感布局 */
+    .grid-3cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 24px 0 32px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px 18px 22px;
+      border: 1px solid #d8e8ec;
+      box-shadow: 0 4px 12px rgba(30, 100, 110, 0.04);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(30, 100, 110, 0.08);
+      border-color: #9fcdd4;
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: inline-block;
+      background: #d6edf0;
+      width: 44px;
+      height: 44px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #05313e;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p, .card li {
+      font-size: 0.9rem;
+      color: #1f4f5c;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .card li {
+      padding: 4px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #2c8b9b;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 720px) {
+      .grid-3cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-3cols {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 提示区 */
+    .notice-area {
+      background: #eff8fa;
+      border-radius: 28px;
+      padding: 24px 28px;
+      margin: 36px 0 28px;
+      border-left: 6px solid #1d8a9c;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 12px 20px;
+    }
+
+    .notice-area .tag {
+      background: #1d8a9c;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .notice-area .content {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .notice-area .content p {
+      font-size: 0.96rem;
+      color: #10414e;
+      margin-bottom: 6px;
+    }
+
+    .notice-area .content small {
+      display: block;
+      color: #386f7d;
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
+
+    /* 相关信息区 — 紧凑 faq 摘要 */
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 28px 0 10px;
+    }
+
+    .info-item {
+      background: white;
+      border-radius: 20px;
+      padding: 16px 22px;
+      border: 1px solid #daecef;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 16px;
+    }
+
+    .info-item .q {
+      font-weight: 600;
+      color: #05313e;
+      min-width: 110px;
+      font-size: 0.95rem;
+    }
+
+    .info-item .a {
+      color: #1f5765;
+      font-size: 0.92rem;
+      flex: 1;
+    }
+
+    .info-item .a a {
+      color: #117b8f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #9ccfd9;
+      transition: border 0.15s;
+    }
+
+    .info-item .a a:hover {
+      border-bottom-color: #117b8f;
+    }
+
+    /* 简明指南段落 */
+    .guide-block {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 28px 30px;
+      margin: 24px 0 16px;
+      border: 1px solid #d6e8ec;
+    }
+
+    .guide-block h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #05313e;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .guide-block h2 span {
+      background: #b1dae2;
+      width: 8px;
+      height: 24px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .guide-block p {
+      font-size: 0.95rem;
+      color: #174956;
+      margin-bottom: 10px;
+    }
+
+    .guide-block strong {
+      color: #0f4f5f;
+    }
+
+    .guide-block .link-sentence {
+      margin-top: 16px;
+      padding: 16px 20px;
+      background: #f0f7f9;
+      border-radius: 48px;
+      font-size: 0.95rem;
+      color: #06323f;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: 44px;
+      text-align: left;
+      font-size: 0.8rem;
+      color: #558a96;
+      border-top: 1px solid #cfe0e4;
+      padding-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .footer-note a {
+      color: #1d7d8f;
+      text-decoration: none;
+      border-bottom: 1px dotted #9fcbd3;
+    }
+
+    .badge {
+      background: #dceef2;
+      padding: 2px 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #0d4b59;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      .guide-block {
+        padding: 20px 16px;
+      }
+      .notice-area {
+        padding: 18px 16px;
+      }
+      .info-item {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- hero -->
+  <div class="hero">
+    <h1>
+      bet365
+      <small>知识库 · 简明索引</small>
+    </h1>
+    <p>聚合使用指引、访问要点与常见疑问，面向需要快速获取结构化信息的用户。</p>
+  </div>
+
+  <!-- 网格卡片：目录感 -->
+  <div class="grid-3cols">
+    <div class="card">
+      <div class="icon">📘</div>
+      <h3>平台概览</h3>
+      <p>体育投注、实时数据、游戏与娱乐内容。了解基本模块与账户体系。</p>
+      <ul>
+        <li>赛事与赔率结构</li>
+        <li>资金管理基础</li>
+        <li>多语言界面</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon">🔐</div>
+      <h3>访问与连接</h3>
+      <p>不同地区访问方式、设备兼容性及网络环境建议。</p>
+      <ul>
+        <li>支持的浏览器</li>
+        <li>移动端与桌面端</li>
+        <li>安全连接提醒</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon">⚙️</div>
+      <h3>常用操作</h3>
+      <p>注册、登录、限额设置及信息更新等高频场景。</p>
+      <ul>
+        <li>账户验证流程</li>
+        <li>存取款方式</li>
+        <li>偏好与通知</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 说明区 + 简明指南 -->
+  <div class="guide-block">
+    <h2><span></span> 使用前 · 简明指南</h2>
+    <p><strong>平台访问</strong> 请确保使用最新版主流浏览器，并保持网络连接稳定。建议通过官方域名直接访问，避免使用未经验证的第三方镜像或入口。</p>
+    <p><strong>账户安全</strong> 启用双重验证（若支持），定期修改密码，并仅从可信设备登录。平台不会通过非官方渠道索取密码或资金信息。</p>
+    <div class="link-sentence">
+      如需直接前往平台进行操作或查阅最新公告，可使用链接 <a href="https://portal-bet365.com">bet365</a>（始终以官方域名为准）。
+    </div>
+  </div>
+
+  <!-- 提示区 -->
+  <div class="notice-area">
+    <span class="tag">访问提醒</span>
+    <div class="content">
+      <p>部分区域可能存在网络限制或访问波动，建议提前了解本地相关法规。若页面加载异常，可尝试更换 DNS 或使用安全可靠的连接方式。</p>
+      <small>提示：浏览器缓存或扩展程序有时会影响页面渲染，可尝试无痕模式或禁用冲突插件。</small>
+    </div>
+  </div>
+
+  <!-- 相关信息区：FAQ摘要 -->
+  <div class="info-section">
+    <div class="info-item">
+      <span class="q">如何找到最新地址？</span>
+      <span class="a">收藏官方域名 <a href="https://portal-bet365.com">bet365</a> 并关注站内通知。若域名变更，通常会在原页面或邮件中告知。</span>
+    </div>
+    <div class="info-item">
+      <span class="q">新用户需要准备什么？</span>
+      <span class="a">邮箱、手机号及有效身份证明（部分区域）。完成注册后建议先浏览“帮助中心”与“条款”。</span>
+    </div>
+    <div class="info-item">
+      <span class="q">存取款一般多久到账？</span>
+      <span class="a">视支付方式而定：电子钱包通常即时或数分钟，银行转账可能 1–3 个工作日。限额与手续费以平台公示为准。</span>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    <span>基于公开信息整理 · 内容仅供参考</span>
+    <span class="badge">知识库入口版</span>
+    <span><a href="https://portal-bet365.com">bet365</a> 官方域名</span>
+  </div>
+</div>
+</body>
+</html>
