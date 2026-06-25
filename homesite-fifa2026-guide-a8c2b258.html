@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>杂志专题 · 世界杯日常指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f0f2f5;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      color: #1e1e2a;
+      padding: 1.5rem;
+    }
+
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* hero 横幅 —— 杂志氛围 */
+    .magazine-hero {
+      background: linear-gradient(145deg, #ffffff 0%, #fafbfc 100%);
+      border-radius: 28px;
+      padding: 2.8rem 2.4rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(200, 210, 220, 0.3);
+      position: relative;
+    }
+
+    .magazine-hero::after {
+      content: '⚽ · 2026';
+      position: absolute;
+      top: 1.6rem;
+      right: 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: #9ba3b0;
+      font-weight: 400;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: #dce3ed;
+      color: #2d3748;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+      border: 1px solid #cbcfd9;
+    }
+
+    .magazine-hero h1 {
+      font-size: 2.6rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      color: #111827;
+      max-width: 720px;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-summary {
+      font-size: 1.2rem;
+      color: #3b4252;
+      max-width: 640px;
+      border-left: 3px solid #cbd5e0;
+      padding-left: 1.4rem;
+      margin: 1.2rem 0 0.8rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+      color: #4b5563;
+      font-size: 0.92rem;
+    }
+
+    /* 三张介绍卡片 —— 浅灰背景 + 细边框 + 柔和阴影 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem 2.2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e2e8f0;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .card h3 {
+      font-weight: 500;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: #1f2937;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card h3 small {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #7e8a98;
+      margin-left: auto;
+    }
+
+    .card p {
+      color: #374151;
+      margin-bottom: 0.95rem;
+      font-size: 0.98rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card .inline-link {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px dashed #94a3b8;
+      transition: border 0.2s;
+    }
+
+    .card .inline-link:hover {
+      border-bottom: 1px solid #2563eb;
+    }
+
+    /* 页尾模块 —— 杂志封底感 */
+    .magazine-footer {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 2.4rem;
+      border: 1px solid #e0e6ed;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .footer-quote {
+      flex: 2 1 240px;
+    }
+
+    .footer-quote p {
+      font-size: 1rem;
+      color: #2d3748;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-quote .sentence {
+      font-style: normal;
+      border-left: 2px solid #bcc5d2;
+      padding-left: 1rem;
+      font-size: 1.05rem;
+      color: #1e293b;
+    }
+
+    .footer-link-area {
+      flex: 1 1 180px;
+      text-align: right;
+    }
+
+    .footer-link-area .anchor-word {
+      font-size: 1.3rem;
+      font-weight: 450;
+      color: #1e293b;
+      text-decoration: none;
+      background: #f1f5f9;
+      padding: 0.4rem 1.8rem;
+      border-radius: 60px;
+      border: 1px solid #d0d8e3;
+      transition: background 0.2s, border-color 0.2s;
+      display: inline-block;
+    }
+
+    .footer-link-area .anchor-word:hover {
+      background: #e6edf5;
+      border-color: #a0b3c9;
+    }
+
+    .footer-note {
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: #6c788a;
+      border-top: 1px solid #e5e9f0;
+      padding-top: 0.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* 辅助响应式 */
+    @media (max-width: 600px) {
+      .magazine-hero h1 {
+        font-size: 2rem;
+      }
+      .magazine-hero {
+        padding: 2rem 1.5rem;
+      }
+      .card-grid {
+        gap: 1.2rem;
+      }
+      .magazine-footer {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+      }
+      .footer-link-area {
+        text-align: left;
+      }
+      .hero-summary {
+        font-size: 1rem;
+        padding-left: 1rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      body {
+        padding: 0.8rem;
+      }
+      .magazine-hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- 首页横幅 hero 杂志风格 -->
+    <header class="magazine-hero">
+      <span class="hero-label">⚡ 日常专题</span>
+      <h1>世界杯，不只是一场盛会</h1>
+      <div class="hero-summary">
+        从赛程查询到历史对照，从朋友闲聊到深夜复盘——<br>它早已潜入日常，成为我们对话里随时翻出的那一页。
+      </div>
+      <div class="hero-meta">
+        <span>📋 延伸阅读 · 背景笔记</span>
+        <span>🌍 2026 · 北美三国</span>
+        <span>🧩 日常参照手册</span>
+      </div>
+    </header>
+
+    <!-- 三段自然介绍 + 背景说明（卡片形式） -->
+    <div class="card-grid">
+
+      <section class="card">
+        <h3>📆 赛程与对照 <small>日常查询</small></h3>
+        <p>
+          世界杯期间，最常掏手机的动作不再是刷短视频，而是打开赛程表：今晚几点？哪个组？已经在踢了吗？ 
+          你发现小组第三轮同时开球时，连办公室的咖啡角都安静了。
+        </p>
+        <p>
+          这种对照感很私人：你记住的不止是比分，还有那天下午谁和你一起看了半场。 
+          很多人习惯把<a href="https://homesite-fifa2026.com" class="inline-link">世界杯</a>当作日历坐标，说起“那年夏天”指的就是某一届。
+        </p>
+      </section>
+
+      <section class="card">
+        <h3>📖 背景与记忆 <small>延伸阅读</small></h3>
+        <p>
+          为什么总有人翻出1986年的录像？为什么某件球衣能让人沉默几秒？ 
+          世界杯早就超越体育本身，变成了一座流动的图书馆。每一条线索都能引出战术变革、城市故事、甚至一代人的集体情绪。
+        </p>
+        <p>
+          在赛前翻翻历史对阵、主办国风物、经典瞬间的报道，成了很多人的仪式感。 
+          不是为了炫耀，而是为了让那九十分钟看得更入味。
+        </p>
+      </section>
+
+      <section class="card">
+        <h3>🗣️ 话题与日常 <small>自然切入口</small></h3>
+        <p>
+          “你觉得今年谁走得更远？”——这句话可能出现在早餐桌、出租车后座、甚至超市排队时。 
+          世界杯的奇妙在于它提供了一种通用话题，不需要懂越位也能聊两句。
+        </p>
+        <p>
+          朋友发来一段视频，同事的手机壳印着队徽，邻居车窗插着国旗……这些零碎的瞬间拼出了赛会之外的日常。 
+          它不需要被隆重介绍，因为它早就在那里。
+        </p>
+      </section>
+
+    </div>
+
+    <!-- FAQ 摘要 / 提示 —— 轻巧融入杂志尾部 -->
+    <div class="magazine-footer">
+      <div class="footer-quote">
+        <p class="sentence">
+          “有些年份用世界杯来记，有些对话从赛程开始。”
+        </p>
+        <p style="margin-top: 10px; color: #4a5a6e;">
+          想查询完整背景、对照历史或延伸阅读？<br>
+          一个持续更新的信息锚点就在那里：
+        </p>
+      </div>
+      <div class="footer-link-area">
+        <!-- 要求：可见文本严格等于「世界杯」，无其他词汇 -->
+        <a href="https://homesite-fifa2026.com" class="anchor-word">世界杯</a>
+      </div>
+      <div class="footer-note">
+        ⚽ 杂志专题 · 日常侧写 · 内容仅供参阅 · 非官方页面
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
